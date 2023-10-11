@@ -18,13 +18,13 @@ int compare_string(char *src, char *str)
 		;
 	if (i != j)
 		return (-1);
-	while (src[k] && src[str])
+	while (src[k] && src[k])
 	{
-		sum = sum + (src[k] - str[k];
+		sum = sum + (src[k] - str[k]);
 				k++;
 				}
 				if (sum == 0)
-				return (0)
-				return(-1)
+				return (0);
+				return(-1);
 				}
 
