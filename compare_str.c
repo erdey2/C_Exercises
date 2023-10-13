@@ -8,23 +8,23 @@
  *      -1 if the strings dont have equal length
  *      or the value is not equal
  */
-int compare_string(char *src, char *str)
+int compare_string(char *str, char *new)
 {
 	int i, j, k = 0, sum = 0;
 
-	for (i = 0; src[i]; i++)
+	for (i = 0; str[i]; i++)
 		;
-	for (j = 0; str[j]; j++)
+	for (j = 0; new[j]; j++)
 		;
 	if (i != j)
 		return (-1);
-	while (src[k] && src[k])
+	while (str[k] && new[k])
 	{
-		sum = sum + (src[k] - str[k]);
-				k++;
-				}
-				if (sum == 0)
-				return (0);
-				return(-1);
+		sum = sum + (str[k] - new[k]);
+		k++;
+		}
+		if (sum == 0)
+		return (0);
+	return (-1);
 				}
 
