@@ -1,12 +1,11 @@
 #include "shell.h"
+
 /**
  * compare_string - compare two strings.
  * @src: pointer to the first string to be compared.
  * @str: pointer to the second string to be compared.
- * return:
- *      0 if the strings  is equal
- *      -1 if the strings dont have equal length
- *      or the value is not equal
+ *
+ * Return: 0 if the strings are equal otherwise -1
  */
 int compare_string(char *str, char *new)
 {
@@ -20,11 +19,12 @@ int compare_string(char *str, char *new)
 		return (-1);
 	while (str[k] && new[k])
 	{
-		sum = sum + (str[k] - new[k]);
-		k++;
-		}
-		if (sum == 0)
-		return (0);
-	return (-1);
+		sum = sum + (src[k] - new[k]);
+				k++;
+				}
+				if (sum == 0)
+				return (0);
+				return(-1);
 				}
 
+ st
