@@ -1,54 +1,66 @@
 #include "shell.h"
-
 /**
- * main - the entry point
- * @ac: the total number of arguments (argument count)
- * @argv: the array of pointer strings (argument vector)
+ * compare_string - compare two strings.
+ * @src: pointer to the first string to be compared.
+ * @str: pointer to the second string to be compared.
  *
- * Return: always 0
- *
+ * Return: 0 if the strings are equal otherwise -1
  */
 
 int main(int ac, char *argv[])
 {
-	int no_read;
-	size_t n = 0;
-	char *str = NULL, *copy_str, *loop_argv[1024];
-	pid_t pid;
+size_t no_read, n, i,compared_result;
+char *str, *copy_str, *my_exit = "exit", *delim = " ", cmd;
+char *loop_argv[1024];
+pid_t pid;
 
-	while (1)
+while (1)
+{
+	prompt();
+	str = NULL;
+	n = 0;
+	no_read = getline (&str, &n, stdin);
+	if (no_read == -1)
 	{
-		prompt();
-		while ((no_read = getline(&str, &n, stdin)) == -1)
+		if (feof(stdin))
 		{
-			if (feof(stdin))
-			{
-				write(1, "\n", 1);
-				break;
-			}
-			else
-			{
-				perror(argv[0]);
-				return (1);
-			}
+			write(1, "\n", 1);
+			break;
 		}
-		if (str == 0)
-			continue;
-		copy_str = malloc(sizeof(char) * no_read);
-		string_copier(str, copy_str);
-		loop_argv[0] = copy_str;
-		loop_argv[1] = NULL, pid = fork();
-		if (pid < 0)
-		{
-			perror(argv[0]);
-			return (2);
-		}
-		else if (pid == 0)
-			command_excute(loop_argv);
 		else
 		{
-			wait(NULL), free(str), free(copy_str), free(loop_argv[1]);
-			return (0);
+			perror(argv[0]);
+			return (1);
 		}
 	}
+	copy_str = malloc(sizeof(char) * no_read);
+	string_copier(str, copy_str);
+	 compared_result = compare_string(copy_str, my_exit);
+	if(compared_result == 0)
+	{
+		break;
+	}
+	tokenzer(copy_str,loop_argv,delim);
+	
+	pathfinder(loop_argv);
+printf("%s  from main \n",loop_argv[0]);
+	pid = fork();
+	if (pid < 0)
+	{
+		perror(argv[0]);
+		return (2);
+	}
+	else if (pid == 0)
+		command_excute(loop_argv);
+	else
+	{
+		wait(NULL);
+		free(str);
+		free(copy_str);
+		// for(i = 0; loop_argv[i] != NULL;i++)
+		// free(loop_argv[i]);
+		return (0);
+	}
+}
+return (0);
 }
