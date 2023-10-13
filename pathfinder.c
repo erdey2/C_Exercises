@@ -5,27 +5,24 @@ int pathfinder(char *argv[])
     char *delim  = ":", *my_path,*copy_path, *hyphen = "/", *null_char = "\0", *cmd;
     char *path_argv[1024];
     struct stat buffer;
-    int i;
-    my_path = getenv("PATH");7
+    int i, count;
+    char *mypath;
+    my_path = getenv("PATH");
     
     if (my_path)
     {
-    //    path_length= length_finder(my_path);
-    
-        // mypath = malloc(sizeof(char)*path_length);
-        // string_copier(mypath,copy_path);
-        copy_path = strdup(my_path);
-      tokenzer(copy_path, path_argv,delim);
+      
+      for(count = 0;my_path[count],count ++);
+      copy_path = malloc(sizeof(char)*(count +3));
+        string_copier(mypath,copy_path);
+        tokenzer(copy_path, path_argv,delim);
         i=0;
         while (path_argv[i]!= NULL)
         {
-            strcat(path_argv[i],"/");
-            strcat(path_argv[i],argv[0]);
-            // strcat(path_argv[i],"\0");
-            // append_str(path_argv[i],hyphen)
-            // append_str(path_argv[i],cmd)
-            // printf("%s \n",path_argv[i]);
-  
+            _strcat(path_argv[i],"/");
+            _strcat(path_argv[i],argv[0]);
+            _strcat(path_argv[i],"\0");
+
           if (stat(path_argv[i], &buffer) == 0)
 
             {
@@ -41,10 +38,9 @@ int pathfinder(char *argv[])
     }
             
             i++;
-            // perror("./shell");
-        //    free(copy_path);
+ 
            }
-//   i++;
+
     }
 }
-// }
+
