@@ -2,8 +2,8 @@
 
 /**
  * main - the entry point
- * @ac: the total number of arguments
- * @argv: the array of pointer strings
+ * @ac: the total number of arguments (argument count)
+ * @argv: the array of pointer strings (argument vector)
  *
  * Return: always 0
  *
@@ -12,8 +12,8 @@
 int main(int ac, char *argv[])
 {
 	int no_read;
-	size_t n = 0, i;
-	char *str = NULL, *copy_str, *loop_argv[1024], *shell_name;
+	size_t n = 0;
+	char *str = NULL, *copy_str, *loop_argv[1024];
 	pid_t pid;
 
 	while (1)
