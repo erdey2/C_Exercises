@@ -27,4 +27,4 @@ int compare_string(char *str, char *new)
 				return(-1);
 				}
 
- st
+ 

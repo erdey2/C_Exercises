@@ -1,7 +1,7 @@
 #include "shell.h" 
 int pathfinder(char *argv[])
 {
-    //   printf("%s \n",argv[0]);
+  
     char *delim  = ":", *my_path,*copy_path, *hyphen = "/", *null_char = "\0", *cmd;
     char *path_argv[1024];
     struct stat buffer;
@@ -15,7 +15,7 @@ int pathfinder(char *argv[])
         // mypath = malloc(sizeof(char)*path_length);
         // string_copier(mypath,copy_path);
         copy_path = strdup(my_path);
-      size_t y = tokenzer(copy_path, path_argv,delim);
+      tokenzer(copy_path, path_argv,delim);
         i=0;
         while (path_argv[i]!= NULL)
         {
