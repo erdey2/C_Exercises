@@ -12,6 +12,7 @@
 void prompt();
 int command_excute(char *loop_argv[]);
 int string_copier(char *str, char *copy);
+int string_copier(char *str, char *copy);
 int compare_str(char *src, char *str);
 char *_strcat(char *s1, const char *s2);
 int pathfinder(char *argv[]);
