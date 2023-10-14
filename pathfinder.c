@@ -2,45 +2,46 @@
 int pathfinder(char *argv[])
 {
   
-    char *delim  = ":", *my_path,*copy_path, *hyphen = "/", *null_char = "\0", *cmd;
+    char *delim  = ":", *my_path,*copy_path;
     char *path_argv[1024];
     struct stat buffer;
-    int i, count;
-    char *mypath;
+    int i;
     my_path = getenv("PATH");
+    /* strlen(my_path);*/
+          
     
     if (my_path)
     {
       
-      for(count = 0;my_path[count],count ++);
-      copy_path = malloc(sizeof(char)*(count +3));
-        string_copier(mypath,copy_path);
+      
+       copy_path = strdup(my_path);
+      
+        /*string_copier(my_path,copy_path);*/
         tokenzer(copy_path, path_argv,delim);
         i=0;
         while (path_argv[i]!= NULL)
         {
+ 
             _strcat(path_argv[i],"/");
             _strcat(path_argv[i],argv[0]);
-            _strcat(path_argv[i],"\0");
+          /*_strcat(path_argv[i],"\0");*/
+        
+      
+           printf("argv[i] %s\n",path_argv[i]);
 
           if (stat(path_argv[i], &buffer) == 0)
 
             {
-            argv[0] = path_argv[i];
-            free(copy_path);
-            return (0);
+                 free(copy_path);
+                 argv[0] =path_argv[i];
+            return(0);
+           
+           
             }
-    else
-    {
+         
+   i++;
+     }
 
-        perror("error");
-        return (4);
-    }
-            
-            i++;
- 
-           }
-
-    }
 }
-
+return (0);
+}

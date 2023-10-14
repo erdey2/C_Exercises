@@ -7,7 +7,7 @@
  *
  * Return: 0 if the strings are equal otherwise -1
  */
-int compare_string(char *str, char *new)
+int compare_str(char *str, char *new)
 {
 	int i, j, k = 0, sum = 0;
 
@@ -19,12 +19,11 @@ int compare_string(char *str, char *new)
 		return (-1);
 	while (str[k] && new[k])
 	{
-		sum = sum + (src[k] - new[k]);
+		sum = sum + (str[k] - new[k]);
 				k++;
 				}
 				if (sum == 0)
 				return (0);
 				return(-1);
 				}
-
- 
+	

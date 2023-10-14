@@ -7,12 +7,14 @@
  * Return: 0 if the strings are equal otherwise -1
  */
 
-int main(int ac, char *argv[])
+int main()
 {
-size_t no_read, n, i,compared_result;
-char *str, *copy_str, *my_exit = "exit", *delim = " ", cmd;
+size_t n,compared_result;
+char *str, *copy_str, *my_exit = "exit", *delim = " ";
 char *loop_argv[1024];
 pid_t pid;
+int no_read;
+
 
 while (1)
 {
@@ -29,36 +31,39 @@ while (1)
 		}
 		else
 		{
-			perror(argv[0]);
+			perror("./shell");
 			return (1);
 		}
 	}
 	copy_str = malloc(sizeof(char) * no_read);
 	string_copier(str, copy_str);
-	 compared_result = compare_string(copy_str, my_exit);
+	 compared_result =  compare_str(copy_str, my_exit);
 	if(compared_result == 0)
 	{
 		break;
 	}
 	tokenzer(copy_str,loop_argv,delim);
-	
+
 	pathfinder(loop_argv);
-printf("%s  from main \n",loop_argv[0]);
+	
+
 	pid = fork();
 	if (pid < 0)
 	{
-		perror(argv[0]);
+		perror("./shell");
 		return (2);
 	}
 	else if (pid == 0)
+
 		command_excute(loop_argv);
 	else
 	{
-		wait(NULL);
+		int status;
+            wait(&status); 
+		
 		free(str);
 		free(copy_str);
-		// for(i = 0; loop_argv[i] != NULL;i++)
-		// free(loop_argv[i]);
+	
 		return (0);
 	}
 }

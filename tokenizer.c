@@ -8,7 +8,7 @@ int tokenzer(char *copy_str,  char *loop_argv[], char *delim)
 
 	{
 		loop_argv[count] = token;
-		// printf("%s \n",loop_argv[count]);
+
 		token = strtok(NULL,delim);
 		count++;
 	}
