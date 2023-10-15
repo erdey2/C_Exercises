@@ -18,4 +18,6 @@ char *_strcat(char *s1, const char *s2);
 char * pathfinder(char *cmd);
 int tokenzer(char *copy_str,  char *loop_argv[], char *delim);
 extern char **environ;
+void print_env_variable(void);
+int _strlen(char *s);
 #endif
