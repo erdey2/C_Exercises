@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * compare_string - compare two strings.
  * @src: pointer to the first string to be compared.
@@ -9,42 +10,38 @@
 
 int main()
 {
-size_t n,compared_result;
-char *str, *copy_str, *my_exit = "exit", *delim = " ",*cmd,*argv1,*my_env = "env";
-char *loop_argv[1024];
-pid_t pid;
-int no_read ;
-
-
-while (1)
-{
-	prompt();
-	str = NULL,n = 0;
-	no_read = getline (&str, &n, stdin);
-	if (no_read == -1)
-	{
-		if (feof(stdin))
-		{
-			write(1, "\n", 1);
-			exit(0);
-		}
-		
-		else
-		{
-			perror("./shell");
-			return (1);
-		}
-	}
-	 	if((str[0]=='\n') && (no_read==1))
-continue;
-	copy_str = malloc(sizeof(char) * no_read);
-
-	string_copier(str, copy_str);
-	 compared_result =  compare_str(copy_str, my_exit);
+	size_t n,compared_result;
+	char *str, *copy_str, *my_exit = "exit", *delim = " ",*cmd,*argv1,*my_env = "env";
+	char *loop_argv[1024];
+	pid_t pid;
+	int no_read ;
 	
-	if(compared_result == 0)
-		exit(0);
-   compared_result =  compare_str(copy_str, my_env);
+	while (1)
+	{
+		prompt();
+		str = NULL,n = 0;
+		no_read = getline (&str, &n, stdin);
+		if (no_read == -1)
+		{
+			if (feof(stdin))
+			{
+				write(1, "\n", 1);
+				exit(0);
+			}
+			else
+			{
+				perror("./shell");
+				return (1);
+			}
+		}
+	 	if((str[0]=='\n') && (no_read==1))
+			continue;
+		copy_str = malloc(sizeof(char) * no_read);
+		string_copier(str, copy_str);
+		compared_result =  compare_str(copy_str, my_exit);
+		if(compared_result == 0)
+			exit(0);
+		compared_result =  compare_str(copy_str, my_env);
    if(compared_result == 0)
    {
 	print_env_variable();
