@@ -9,7 +9,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-void prompt();
+void prompt(void);
 int command_excute(char *loop_argv[]);
 int string_copier(char *str, char *copy);
 int string_copier(char *str, char *cpy_of_str);

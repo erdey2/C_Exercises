@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * compare_string - compare two strings.
- * @src: pointer to the first string to be compared.
- * @str: pointer to the second string to be compared.
+ * compare_str - compare two strings.
+ * @str: pointer to the first string to be compared.
+ * @new: pointer to the second string to be compared.
  *
  * Return: 0 if the strings are equal otherwise -1
  */
@@ -20,10 +20,9 @@ int compare_str(char *str, char *new)
 	while (str[k] && new[k])
 	{
 		sum = sum + (str[k] - new[k]);
-				k++;
-				}
-				if (sum == 0)
-				return (0);
-				return(-1);
-				}
-	
+		k++;
+	}
+	if (sum == 0)
+		return (0);
+	return (-1);
+}
