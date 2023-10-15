@@ -29,6 +29,7 @@ while (1)
 			write(1, "\n", 1);
 			break;
 		}
+		
 		else
 		{
 			perror("./shell");
