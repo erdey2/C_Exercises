@@ -10,10 +10,10 @@
 int main()
 {
 size_t n,compared_result;
-char *str, *copy_str, *my_exit = "exit", *delim = " ";
+char *str, *copy_str, *my_exit = "exit", *delim = " ",*cmd,*argv1;
 char *loop_argv[1024];
 pid_t pid;
-int no_read;
+int no_read ;
 
 
 while (1)
@@ -40,22 +40,27 @@ while (1)
 	 compared_result =  compare_str(copy_str, my_exit);
 	if(compared_result == 0)
 	{
-		break;
+		exit(0);
 	}
 	tokenzer(copy_str,loop_argv,delim);
+	/*old_argv=loop_argv[0];*/
+	cmd = loop_argv[0];
+argv1= pathfinder(cmd);
+if (argv1 == NULL)
+  {
+perror("./shell");
+continue;
 
-	pathfinder(loop_argv);
-	
-
-	pid = fork();
+  }
+ loop_argv[0]=argv1;
+pid = fork();
 	if (pid < 0)
 	{
 		perror("./shell");
 		return (2);
 	}
 	else if (pid == 0)
-
-		command_excute(loop_argv);
+command_excute(loop_argv); 
 	else
 	{
 		int status;
@@ -64,7 +69,7 @@ while (1)
 		free(str);
 		free(copy_str);
 	
-		return (0);
+		
 	}
 }
 return (0);
