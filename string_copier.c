@@ -16,6 +16,6 @@ int string_copier(char *str, char *copy)
 		i++;
 	}
 	if (copy[i - 1] == '\n')
-		copy[i - 1] ='\0';
+		copy[i - 1] = '\0';
 	return (0);
 }
