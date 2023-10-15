@@ -19,15 +19,14 @@ int no_read;
 while (1)
 {
 	prompt();
-	str = NULL;
-	n = 0;
+	str = NULL,n = 0;
 	no_read = getline (&str, &n, stdin);
 	if (no_read == -1)
 	{
 		if (feof(stdin))
 		{
 			write(1, "\n", 1);
-			break;
+			exit(0);
 		}
 		else
 		{
