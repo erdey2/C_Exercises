@@ -17,4 +17,5 @@ int compare_str(char *src, char *str);
 char *_strcat(char *s1, const char *s2);
 int pathfinder(char *argv[]);
 int tokenzer(char *copy_str,  char *loop_argv[], char *delim);
+extern char **environ;
 #endif
