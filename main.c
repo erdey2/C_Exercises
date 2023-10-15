@@ -1,86 +1,48 @@
 #include "shell.h"
 /**
- * compare_string - compare two strings.
- * @src: pointer to the first string to be compared.
- * @str: pointer to the second string to be compared.
- *
- * Return: 0 if the strings are equal otherwise -1
+ * main - entry of the shell program
+ *.
+ * Return: 0 if the program exucute correct
  */
 
-int main()
+int main(void)
 {
-size_t n,compared_result;
-char *str, *copy_str, *my_exit = "exit", *delim = " ",*cmd,*argv1,*my_env = "env";
-char *loop_argv[1024];
-pid_t pid;
-int no_read ;
+	size_t n, num_of_read;
+	char *str, *cpy_of_str, *delim = " ";
+	char *loop_argv[1024];
+	pid_t pid;
 
-
-while (1)
-{
-	prompt();
-	str = NULL,n = 0;
-	no_read = getline (&str, &n, stdin);
-	if (no_read == -1)
+	while (1)
 	{
-		if (feof(stdin))
-		{
-			write(1, "\n", 1);
-			exit(0);
-		}
-		
-		else
+		prompt();
+		str = NULL, n = 0;
+		num_of_read = shellgetline(&str, &n);
+		if ((str[0] == '\n') && (num_of_read == 1))
+			continue;
+		cpy_of_str = malloc(sizeof(char) * num_of_read);
+		string_copier(str, cpy_of_str);
+		tokenzer(cpy_of_str, loop_argv, delim);
+		pathfinder(loop_argv);
+		pid = fork();
+		if (pid < 0)
 		{
 			perror("./shell");
-			return (1);
+			return (2);
+		}
+		else if (pid == 0)
+			command_excute(loop_argv);
+		else
+		{
+		 int status;
+            if (waitpid(pid, &status, 0) == -1)
+			 {
+                perror("./shell");
+                exit(1);
+            }
+
+			free(str);
+			free(cpy_of_str);
 		}
 	}
-	 	if((str[0]=='\n') && (no_read==1))
-continue;
-	copy_str = malloc(sizeof(char) * no_read);
-
-	string_copier(str, copy_str);
-	 compared_result =  compare_str(copy_str, my_exit);
-	
-	if(compared_result == 0)
-		exit(0);
-   compared_result =  compare_str(copy_str, my_env);
-   if(compared_result == 0)
-   {
-	print_env_variable();
-	continue;
-   }
-
-
-	tokenzer(copy_str,loop_argv,delim);
-	/*old_argv=loop_argv[0];*/
-	cmd = loop_argv[0];
-argv1= pathfinder(cmd);
-if (argv1 == NULL)
-  {
-perror("./shell");
-continue;
-
-  }
- loop_argv[0]=argv1;
-pid = fork();
-	if (pid < 0)
-	{
-		perror("./shell");
-		return (2);
-	}
-	else if (pid == 0)
-command_excute(loop_argv); 
-	else
-	{
-		int status;
-            wait(&status); 
-		
-		free(str);
-		free(copy_str);
-	
-		
-	}
-}
-return (0);
+	return (0);
 }

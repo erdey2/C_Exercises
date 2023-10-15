@@ -13,5 +13,6 @@ int tokenzer(char *copy_str,  char *loop_argv[], char *delim)
 		count++;
 	}
 	loop_argv[count] = NULL;
+	
 	return (count);
 }

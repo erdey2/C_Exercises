@@ -1,15 +1,14 @@
 #include "shell.h" 
-char * pathfinder(char *cmd)
+int pathfinder(char *loop_argv[])
 {
   
-    char *delim  = ":", *my_path,*copy_path;
+  char *delim  = ":", *my_path, *copy_path, *cmd = loop_argv[0];
   char *path_argv[1024];
     struct stat buffer;
     int i,count;
     my_path = getenv("PATH");
   
           
-    
     if (my_path)
     {
       
@@ -30,11 +29,21 @@ char * pathfinder(char *cmd)
           if (stat(path_argv[i], &buffer) == 0)
 
             {
+              if (path_argv[i] == NULL)
+	                 {
+                     free(copy_path);
+			            perror("./shell");
+                
+			            return (0);
+	                	}
+              else
+               {
                  free(copy_path);
+                 loop_argv[0]= path_argv[i];
                    
-            return(path_argv[i]);
+            return (0);
            
-           
+           } 
             }
 
          i++;
@@ -44,7 +53,7 @@ char * pathfinder(char *cmd)
          
 
      }
-     return (NULL);
+     return (0);
 
 }
 

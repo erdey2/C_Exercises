@@ -12,12 +12,13 @@
 void prompt();
 int command_excute(char *loop_argv[]);
 int string_copier(char *str, char *copy);
-int string_copier(char *str, char *copy);
-int compare_str(char *src, char *str);
+int string_copier(char *str, char *cpy_of_str);
+int compare_str(char *str, char *new);
 char *_strcat(char *s1, const char *s2);
-char * pathfinder(char *cmd);
+int pathfinder(char *argv[]);
 int tokenzer(char *copy_str,  char *loop_argv[], char *delim);
 extern char **environ;
 void print_env_variable(void);
 int _strlen(char *s);
+int shellgetline(char **str,size_t *n);
 #endif
