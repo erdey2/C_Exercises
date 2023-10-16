@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /**
  * num_subtractor -subtract two intiger number
  * and print to standard output
