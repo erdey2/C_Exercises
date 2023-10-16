@@ -12,10 +12,11 @@ int main(void)
 	char *str, *cpy_of_str, *delim = " ";
 	char *loop_argv[1024];
 	pid_t pid;
+	char *prompt = "$ ";
 
 	while (1)
 	{
-		prompt();
+		write(1, prompt, 2);
 		str = NULL, n = 0;
 		num_of_read = shellgetline(&str, &n);
 		if ((str[0] == '\n') && (num_of_read == 1))
