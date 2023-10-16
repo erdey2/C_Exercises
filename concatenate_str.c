@@ -5,7 +5,7 @@
  * @s1: destination string
  * @s2: source string
  *
- * return - the concatenated string
+ * Return: the concatenated string
  */
 
 char *_strcat(char *s1, const char *s2)
