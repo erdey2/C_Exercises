@@ -2,7 +2,7 @@
 
 /**
  * main - entry of the shell program
- *.
+ *
  * Return: 0 if the program exucute correct
  */
 
@@ -34,13 +34,13 @@ int main(void)
 			command_excute(loop_argv);
 		else
 		{
-		 int status;
-            if (waitpid(pid, &status, 0) == -1)
-			 {
-                perror("./shell");
-                exit(1);
-            }
+			int status;
 
+			if (waitpid(pid, &status, 0) == -1)
+			{
+				perror("./shell");
+				exit(1);
+			}
 			free(str);
 			free(cpy_of_str);
 		}
