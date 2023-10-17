@@ -22,5 +22,6 @@ extern char **environ;
 void print_env_variable(void);
 int _strlen(char *s);
 int shellgetline(char **str, size_t *n);
+int command_check(char **argv);
 
 #endif
