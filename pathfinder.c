@@ -39,6 +39,9 @@ int pathfinder(char *loop_argv[])
 				{
 					free(copy_path);
 					loop_argv[0] = path_argv[i];
+				
+				
+				
 					return (0);
 				}
 			}
