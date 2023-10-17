@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * set_env - sets an array of Enviroment Variables
- * @evi: Array of pointers 
+ * _setenv - sets an array of Enviroment Variables
+ * @evi: Array of pointers
  */
 
 void _setenv(char **evi)
@@ -15,7 +15,7 @@ void _setenv(char **evi)
 }
 
 /**
- * unset_env - Frees the environment variables
+ * _unset - Frees the environment variables
  * @env:  Array of pointer of Environment variables
  */
 void _unset(char **env)
