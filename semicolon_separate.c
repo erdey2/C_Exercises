@@ -3,8 +3,9 @@
 /**
  * semicolon_separate - Separates command recieved from stdin by semicolon
  * @str: String gathered from stdin
- * Return: Parsed strings 
+ * Return: Parsed strings
  */
+
 char **semicolon_separate(char *str)
 {
 	char **cmds;
