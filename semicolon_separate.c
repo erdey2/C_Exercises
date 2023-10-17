@@ -1,4 +1,4 @@
-#include "header.h"
+#include "shell.h"
 
 /**
  * semicolon_separate - Separates command recieved from stdin by semicolon
@@ -10,8 +10,7 @@ char **semicolon_separate(char *str)
 {
 	char **cmds;
 	char *cmd;
-	int i;
-	int buffsize = 1024;
+	int buffsize = 1024, i;
 
 	if (str[0] == ' ' && str[_strlen(str)] == ' ')
 		exit(0);
@@ -24,14 +23,13 @@ char **semicolon_separate(char *str)
 		perror("hsh");
 		return (NULL);
 	}
-	cmd = _strtok(input, ";&");
+	cmd = _strtok(str, "&;");
 	for (i = 0; cmd; i++)
 	{
 		cmds[i] = cmd;
-		cmd = tokenizer(NULL, ";&");
+		cmd = _strtok(NULL, "&;");
 	}
 	cmds[i] = NULL;
 
 	return (cmds);
 }
-
