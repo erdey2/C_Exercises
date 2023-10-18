@@ -9,7 +9,7 @@
 int string_copier(char *str, char *cpy_of_str)
 {
 	int i = 0;
-	
+
 	while (str[i])
 	{
 		cpy_of_str[i] = str[i];
