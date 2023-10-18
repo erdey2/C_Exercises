@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _setenv - sets an array of Enviroment Variables
+ * _setenv - sets an array of enviroment variables
  * @evi: Array of pointers
  */
 
