@@ -10,7 +10,7 @@ unsigned int delimiter_checker(char c, const char *s)
 {
 	unsigned int i;
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (c == s[i])
 			return (1);
@@ -30,7 +30,7 @@ char *_strtok(char *s1, const char *s2)
 	static char *p;
 	unsigned int i;
 
-	if (str != NULL)
+	if (s1 != NULL)
 		p = s1;
 	tokens = p;
 	if (tokens == NULL)

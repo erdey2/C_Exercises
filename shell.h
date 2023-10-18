@@ -25,7 +25,7 @@ void _setenv(char **evi);
 void _unset(char **env);
 
 void print_env_variable(void);
-char _strlen(char *s);
+int _strlen(char *s);
 char  *_strdup(char *s);
 int shellgetline(char **str, size_t *n);
 int command_check(char **argv);
