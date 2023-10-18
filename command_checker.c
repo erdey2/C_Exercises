@@ -1,9 +1,9 @@
-
 #include "shell.h"
+
 int command_check(char *argv[])
 {
-ssize_t compared_result;
-char *my_exit = "exit", *my_env = "env", *_setenv = "setenv", *_unsetenv= "unsetenv";
+	ssize_t compared_result;
+	char *my_exit = "exit", *my_env = "env", *_setenv = "setenv", *_unsetenv= "unsetenv";
 
 	compared_result = compare_str(argv[0], my_exit);
 	
