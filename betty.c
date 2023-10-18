@@ -3,11 +3,11 @@
 
 /**
  * display - display text
- * 
+ *
  * Return: void
  */
 
-void display(int x, int y)
+void display(void)
 {
 	printf("Betty is beautiful\n");
 }
