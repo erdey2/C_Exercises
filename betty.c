@@ -1,13 +1,13 @@
+#include "shell.h"
 #include <stdio.h>
 
 /**
- * num_subtractor -subtract two intiger number
- * and print to standard output
- * @x: the first number
- * @y: the second number
+ * display - display text
+ * 
+ * Return: void
  */
 
-void num_subtractor(int x, int y)
+void display(int x, int y)
 {
-	printf("the result is %d\n", x + y);
+	printf("Betty is beautiful\n");
 }
