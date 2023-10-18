@@ -1,13 +1,12 @@
-#include "shell.h"
 #include <stdio.h>
 
 /**
- * display - display text
+ * main- entry point of the program
  *
- * Return: void
+ * Return: always 0
  */
 
-void display(void)
+void main(void)
 {
 	printf("Betty is beautiful\n");
 }
